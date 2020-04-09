@@ -2,12 +2,13 @@
   "name": "slack-bot-multidm",
   "version": "1.0.0",
   "description": "Slackbot for sending multiple DMs",
+  "homepage": "https://github.com/rue/slack-bot-multidm",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext js,ts"
   },
-  "author": "Eero Säynätkari",
+  "author": "Eero Säynätkari <hello@eero.dev>",
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.27.0",
