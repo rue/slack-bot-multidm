@@ -67,9 +67,13 @@ app.action("hello_button_click", async ({ body, ack, say, logger }) => {
 app.command("/multidm", async ({ command, ack, say, logger }) => {
   logger.info({ type: "command", event: "/multidm", command });
 
-  await ack();
+  try {
+    await ack();
 
-  await say(`<@${body.user.id}> clicked the button, the dummy!`);
+    await say(`@hello slashcommanded!`);
+  } catch (error) {
+    logger.error({ type: "error", event: "/multidm", error });
+  }
 });
 
 // Main
