@@ -1,13 +1,11 @@
 import { App } from "@slack/bolt";
-import { ConsoleLogger, LogLevel } from "@slack/logger";
-import { SectionBlock } from "@slack/types";
+import { LogLevel } from "@slack/logger";
 
 const PORT = process.env.PORT || 3000;
 
 const app = new App({
-  token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  logger: new ConsoleLogger(),
+  token: process.env.SLACK_MULTIDM_BOT_TOKEN,
+  signingSecret: process.env.SLACK_MULTIDM_SIGNING_SECRET,
   logLevel: LogLevel.DEBUG,
 });
 
