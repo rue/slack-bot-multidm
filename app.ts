@@ -13,8 +13,12 @@ const app = new App({
 
 // Events
 
-app.message("hello", async ({ message, say }) => {
-  console.log({ event: "helloEvent", message });
+app.error(async (error) => {
+  console.error({ type: "error", event: "fallbackErrorHandler", error });
+});
+
+app.message("hello", async ({ message, say, logger }) => {
+  logger.info({ type: "message", event: "hello", message });
 
   /* eslint-disable @typescript-eslint/camelcase */
   const section: SectionBlock = {
@@ -33,17 +37,35 @@ app.message("hello", async ({ message, say }) => {
     },
   };
 
-  await say({
-    blocks: [section],
-    text:
-      "This say() contains a section block; this text should not be displayed",
-  });
+  try {
+    await say({
+      blocks: [section],
+      text:
+        "This say() contains a section block; this text should not be displayed",
+    });
+  } catch (error) {
+    logger.error({ type: "error", event: "hello", error });
+  }
 });
 
 // Actions
 
-app.action("hello_button_click", async ({ body, ack, say }) => {
-  console.log({ event: "action hello_button_click", body });
+app.action("hello_button_click", async ({ body, ack, say, logger }) => {
+  logger.info({ type: "action", event: "hello_button_click", body });
+
+  try {
+    await ack();
+
+    await say(`<@${body.user.id}> clicked the button, the dummy!`);
+  } catch (error) {
+    logger.error({ type: "error", event: "hello click", error });
+  }
+});
+
+// Commands
+
+app.command("/multidm", async ({ command, ack, say, logger }) => {
+  logger.info({ type: "command", event: "/multidm", command });
 
   await ack();
 
