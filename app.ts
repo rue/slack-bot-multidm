@@ -33,5 +33,5 @@ app.command("/multidm", async ({ command, ack, say, logger }) => {
 
 (async (): Promise<void> => {
   await app.start(PORT);
-  console.log(`⚡️ Bolt is running on ${PORT}!`);
+  console.log(`⚡️ MultiDM bot is running on ${PORT}!`);
 })();
