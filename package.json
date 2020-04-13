@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,ts",
     "watch": "concurrently \"tsc -w --preserveWatchOutput\" \"nodemon dist/app.js\"",
     "build": "tsc",
-    "start": "npm run build && node --enable-source-maps dist/app.js"
+    "start": "npm run build && node dist/app.js"
   },
   "author": "Eero Säynätkari <hello@eero.dev>",
   "license": "SEE LICENSE IN LICENSE.md",
