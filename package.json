@@ -10,7 +10,8 @@
     "lint": "eslint . --ext js,ts",
     "watch": "concurrently \"tsc -w --preserveWatchOutput\" \"nodemon dist/app.js\"",
     "build": "tsc",
-    "start": "npm run build && node dist/app.js"
+    "start": "node dist/app.js",
+    "dev": "node run build && node run start"
   },
   "author": "Eero Säynätkari <hello@eero.dev>",
   "license": "SEE LICENSE IN LICENSE.md",
