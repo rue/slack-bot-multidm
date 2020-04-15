@@ -1,0 +1,6 @@
+.DS_Store
+.thumbsdb
+.git
+.gitignore
+dist
+node_modules
