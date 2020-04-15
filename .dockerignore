@@ -1,6 +1,8 @@
 .DS_Store
 .thumbsdb
+.env
 .git
 .gitignore
+*.env
 dist
 node_modules
