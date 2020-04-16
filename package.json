@@ -1,6 +1,6 @@
 {
   "name": "slack-bot-multidm",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Slackbot for sending multiple DMs",
   "homepage": "https://github.com/rue/slack-bot-multidm",
   "repository": "github:rue/slack-bot-multidm",
