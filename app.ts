@@ -43,7 +43,7 @@ async function dmUser(
   logger: Logger,
 ): Promise<void> {
   if (typeof myUserToken !== "string") {
-    throw `You must set $SLACK_MULTIDM_USER_TOKEN!`;
+    throw `No token set!`;
   }
 
   const createDMResult = await app.client.conversations.open({
@@ -51,7 +51,9 @@ async function dmUser(
     users: targetUserId,
   });
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const channel: any = createDMResult.channel;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const channelId: any = channel.id;
 
   logger.info({
@@ -95,8 +97,11 @@ app.command("/multidm", async ({ command, ack, say, context, logger }) => {
 
     await ack();
 
+    const senderToken =
+      command.user === "rue" && USER_TOKEN ? USER_TOKEN : context.botToken;
+
     const sentDmPromises = users.map((user) => {
-      dmUser(user, message, USER_TOKEN, logger);
+      dmUser(user, message, senderToken, logger);
     });
 
     await Promise.all(sentDmPromises);
