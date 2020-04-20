@@ -83,7 +83,7 @@ app.error(async (error) => {
 
 // Commands
 
-app.command("/multidm", async ({ command, ack, say, context, logger }) => {
+app.command("/multidm", async ({ command, ack, context, logger }) => {
   logger.info({ type: "command", event: "/multidm", command, context });
 
   try {
@@ -106,7 +106,14 @@ app.command("/multidm", async ({ command, ack, say, context, logger }) => {
 
     await Promise.all(sentDmPromises);
 
-    await say(`@hello slashcommanded!`);
+    const confirmationMessage = `Sent DMs to users. Message: ${message}`;
+
+    await dmUser(
+      context.user_id,
+      confirmationMessage,
+      context.botToken,
+      logger,
+    );
   } catch (error) {
     logger.error({
       type: "error",
