@@ -119,6 +119,8 @@ app.command("/multidm", async ({ command, ack, context, logger }) => {
       type: "error",
       event: "/multidm",
       error,
+      /* eslint-disable @typescript-eslint/camelcase */
+      meta: error && error.data && error.data.response_metadata,
     });
   }
 });
