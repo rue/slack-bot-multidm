@@ -16,7 +16,8 @@ function parseUsersAndMessage(text: string): [string[], string] {
     throw `text too short to be valid: ${text}`;
   }
 
-  const [users, message] = text.split(":", 2);
+  const [users, ...rest] = text.split(":");
+  const message = rest.join(":");
 
   if (!users || users.length < 10 || !message || message.length < 1) {
     throw `text seems invalid: ${text}`;
